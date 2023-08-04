@@ -38,7 +38,7 @@ public class Member extends BaseEntity {
     private  String address;
     @Enumerated(EnumType.STRING)
     //@ColumnDefault // 디비에 저장되는 시점에 값이 없을경우 데이터를 초기화 함. VS @Builder.Default  : 객체를 생성하는 시점에서 값을 초기화해준다.
-    @Builder.Default
+//    @Builder.Default
     private Gender gender = Gender.MAN;
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -51,7 +51,7 @@ public class Member extends BaseEntity {
         member.setEmail(memberFormDto.getEmail());
         member.setAddress(memberFormDto.getAddress());
         member.setPassword(passwordEncoder.encode(memberFormDto.getPassword()));
-        member.setRole(Role.USER); // 가입시 role은 무조건 회원으로 저장
+        member.setRole(Role.ADMIN); // 가입시 role은 무조건 회원으로 저장
         member.setGender(memberFormDto.getGender());
         member.setContact(memberFormDto.getContact());
         return member;

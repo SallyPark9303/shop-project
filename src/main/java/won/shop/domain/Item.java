@@ -32,6 +32,7 @@ public class Item extends BaseEntity  {
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; //상품 판매 상태
 
+    // 엔티티 클래스에 비즈니스 로직을 추가하면 객체지향적으로 코딩가능하고 코드 재활용가능, 데이터 변경 포인트를 한군데서 관리할 수 있다.
     public void updateItem(ItemFormDto itemFormDto){
         this.itemNm = itemFormDto.getItemNm();
         this.price = itemFormDto.getPrice();

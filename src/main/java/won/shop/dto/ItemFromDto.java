@@ -13,7 +13,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ItemFormDto {
+public class ItemFromDto {
+
     private Long id;
 
     @NotBlank(message = "상품명은 필수 입력 값입니다.")
@@ -43,5 +44,7 @@ public class ItemFormDto {
     public static ItemFormDto of(Item item){
         return modelMapper.map(item,ItemFormDto.class);
     }
+
+
 
 }
