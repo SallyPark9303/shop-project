@@ -24,7 +24,7 @@ public class Member {
     @Id
     @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  long id;
+    private  Long id;
     @NotBlank
     @Length(min= 3,max=20,message = "최소 3자리부터 20자리까지 입력가능합니다.")
     private  String name;
