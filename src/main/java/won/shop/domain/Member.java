@@ -1,5 +1,6 @@
 package won.shop.domain;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +21,7 @@ import won.shop.dto.MemberFormDto;
 @Entity
 @Getter
 @Setter
-public class Member {
+public class Member extends BaseEntity {
     @Id
     @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
