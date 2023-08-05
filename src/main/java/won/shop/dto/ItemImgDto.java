@@ -10,7 +10,7 @@ import won.shop.domain.ItemImg;
 public class ItemImgDto {
     private Long id;
 
-    private String imgName;
+    private String itemNm;
 
     private String oriImgName;
 

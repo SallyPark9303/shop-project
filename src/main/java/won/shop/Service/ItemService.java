@@ -14,6 +14,7 @@ import won.shop.domain.ItemImg;
 import won.shop.dto.ItemFormDto;
 import won.shop.dto.ItemImgDto;
 import won.shop.dto.ItemSearchDto;
+import won.shop.dto.MainItemDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,5 +94,9 @@ public class ItemService {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getMainItemPage(itemSearchDto,pageable);
+    }
 
 }

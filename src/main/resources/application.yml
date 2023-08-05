@@ -1,16 +1,16 @@
 spring:
   datasource:
-    url: 
-    username:
-    password:
+    url: jdbc:sqlserver://pshopdb.database.windows.net:1433;database=shop_prj;user=won2@pshopdb;password=dnjs!32433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: won2@pshopdb
+    password: dnjs!32433
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   messages:
     basename: messages
   mail:
-    host: 
-    port:
-    username:
-    password:
+    host: smtp.gmail.com
+    port: 587
+    username: sallypark185@gmail.com
+    password: cvlpfstkiyruesvf
     properties:
       mail:
         smtp:
@@ -19,14 +19,19 @@ spring:
             enable: true
             required: true
 
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
   sql:
     init:
       encoding=UTF-8
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
-  # show_sql: true
+      hibernate:
+      # show_sql: true
         format_sql: true
   logging:
     level:
@@ -42,6 +47,10 @@ spring:
 # org.hibernate.orm.jdbc.bind: trace #스프링 부트 3.x, hibernate6
 file:
   dir: C:\Users\ParkWonkyoung\Desktop\projects\files\
+  #이미지 경로저장
+itemImgLocation: C:/projects/item/
+  #프로젝트 내부가 아닌 자신의 컴퓨터에서 파일을 찾는 경로
+uploadPath: file:///C:/projects/
 
 
 

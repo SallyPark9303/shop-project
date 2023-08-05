@@ -1,19 +1,33 @@
 package won.shop;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import won.shop.Service.ItemService;
+import won.shop.dto.ItemSearchDto;
+import won.shop.dto.MainItemDto;
+
+import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 public class MainController {
+    private final ItemService itemService;
+    @GetMapping(value = "/")
+    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
 
-    @GetMapping("/")
-    public String main(@AuthenticationPrincipal User user, Model model){
-        if(user != null){
-            model.addAttribute("userName",user.getUsername());
-        }
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
+        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
+
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
 
         return "/main";
     }

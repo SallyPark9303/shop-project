@@ -1,8 +1,72 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/_layout.html}">
-<div  layout:fragment="content" class="container">
-메인화면입니다.
-<h2 > <span th:text="${userName}"></span> 님 반갑습니다.~</h2>
+<div  layout:fragment="content" class="container-fluid">
+
+    <div id="carouselControls" class="carousel slide margin" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active item">
+                <img class="d-block w-100 banner" src="https://user-images.githubusercontent.com/13268420/112147492-1ab76200-8c20-11eb-8649-3d2f282c3c02.png" alt="First slide">
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
+    <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
+        <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
+    </div>
+
+    <div class="row  mt-4">
+        <th:block th:each="item, status: ${items.getContent()}">
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100">
+                <a  th:href="'/item/' +${item.id}">
+                    <img th:src="${item.imgUrl}" class="card-img-top mt-4" alt="...">
+                </a>
+                <div class="card-body">
+                    <ul class="list-unstyled d-flex justify-content-between d-none">
+                        <li>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                        </li>
+                        <li class="text-muted text-right">$240.00</li>
+                    </ul>
+                    <a th:href="'/item/' +${item.id}" class="h2 text-decoration-none text-dark">[[${item.itemNm}]]</a>
+                    <p class="card-text">
+                        [[${item.itemDetail}]]
+                    </p>
+                    <p class="text-muted">[[${item.price}]]원</p>
+                </div>
+            </div>
+        </div>
+        </th:block>
+    </div>
+<th:block th:if="${items.size>0}">
+    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+        <ul class="pagination justify-content-center">
+
+            <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
+                <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
+                    <span aria-hidden='true'>Previous</span>
+                </a>
+            </li>
+
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
+                <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+            </li>
+
+            <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+                <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                    <span aria-hidden='true'>Next</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</th:block>
+
 </div>
 </html>
