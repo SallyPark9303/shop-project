@@ -7,8 +7,9 @@
   <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 
-<!-- 사용자 스크립트 추가 -->
-<th:block layout:fragment="script">
+
+<div layout:fragment="content">
+
   <script th:inline="javascript">
     $(document).ready(function(){
 
@@ -107,37 +108,8 @@
     }
 
   </script>
-</th:block>
 
-<!-- 사용자 CSS 추가 -->
-<th:block layout:fragment="css">
-  <style>
-    .mgb-15{
-      margin-bottom:15px;
-    }
-    .mgt-30{
-      margin-top:30px;
-    }
-    .mgt-50{
-      margin-top:50px;
-    }
-    .repImgDiv{
-      margin-right:15px;
-      height:auto;
-      width:50%;
-    }
-    .repImg{
-      width:100%;
-      height:400px;
-    }
-    .wd50{
-      height:auto;
-      width:50%;
-    }
-  </style>
-</th:block>
 
-<div layout:fragment="content">
 
   <input type="hidden" id="itemId" th:value="${item.id}"/>
 
@@ -187,7 +159,7 @@
                 <input type="hidden" name="product-title" value="Activewear">
                 <div class="row pb-3">
                   <div class="col d-grid">
-                    <button type="button" class="btn btn-success btn-lg" name="submit" onclick="order()">주문</button>
+                    <a class="btn btn-success btn-lg" th:href="'javascript:order()'" >주문</a>
                   </div>
                   <div class="col d-grid">
                     <button type="button"
@@ -209,4 +181,5 @@
 
   </section>
 </div>
+
 </html>

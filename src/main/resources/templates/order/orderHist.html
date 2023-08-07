@@ -1,0 +1,109 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/_layout.html}">
+
+<head>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+
+<div layout:fragment="content">
+
+  <script th:inline="javascript">
+    function cancelOrder(orderId) {
+      var token = $("meta[name='_csrf']").attr("content");
+      var header = $("meta[name='_csrf_header']").attr("content");
+
+      var url = "/order/" + orderId + "/cancel";
+      var paramData = {
+        orderId : orderId,
+      };
+
+      var param = JSON.stringify(paramData);
+
+      $.ajax({
+        url      : url,
+        type     : "POST",
+        contentType : "application/json",
+        data     : param,
+        beforeSend : function(xhr){
+          /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+          xhr.setRequestHeader(header, token);
+        },
+        dataType : "json",
+        cache   : false,
+        success  : function(result, status){
+          alert("주문이 취소 되었습니다.");
+          location.href='/orders/' + [[${page}]];
+        },
+        error : function(jqXHR, status, error){
+          if(jqXHR.status == '401'){
+            alert('로그인 후 이용해주세요');
+            location.href='/members/login';
+          } else{
+            alert(jqXHR.responseText);
+          }
+        }
+      });
+    }
+
+  </script>
+
+  <h2 class="mb-4">
+    구매 이력
+  </h2>
+<div class="container">
+  <div th:each="order : ${orders.getContent()}" style="width:700px;">
+
+    <div class="d-flex mb-3 align-self-center mt-5">
+      <h4 th:text="${order.orderDate} + ' 주문'"></h4>
+      <div class="ms-3  ml-3">
+        <th:block th:if="${order.orderStatus == T(won.shop.constant.OrderStatus).ORDER}">
+          <button type="button" class="btn btn-outline-secondary" th:value="${order.orderId}" onclick="cancelOrder(this.value)">주문취소</button>
+        </th:block>
+        <th:block th:unless="${order.orderStatus == T(won.shop.constant.OrderStatus).ORDER}">
+          <h4>(취소 완료)</h4>
+        </th:block>
+      </div>
+    </div>
+    <div class="card d-flex">
+      <div th:each="orderItem : ${order.orderItemDtoList}" class="d-flex mb-3">
+        <div class="repImgDiv">
+          <img th:src="${orderItem.imgUrl}" width="120px" class = "rounded repImg" th:alt="${orderItem.itemNm}">
+        </div>
+        <div class="ps-3 align-self-center w-75">
+          <span th:text="${orderItem.itemNm}" class="fs24 font-weight-bold"></span>
+          <div class="fs18 font-weight-light">
+            <span th:text="${orderItem.orderPrice} +'원'"></span>
+            <span th:text="${orderItem.count} +'개'"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div div="row my-3"  th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})">
+    <ul class="pagination pagination-lg justify-content-end">
+      <li class="page-item" th:classappend="${orders.number eq 0}?'disabled':''">
+        <a th:href="@{'/orders/' + ${orders.number-1}}" aria-label='Previous' class="page-link">
+          <span aria-hidden='true'><i class="bi bi-arrow-left"></i></span>
+        </a>
+      </li>
+      <li class="page-item"  th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${orders.number eq page-1}?'active':''">
+        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" th:href="@{'/orders/' + ${page-1}}" th:inline="text">[[${page}]]</a>
+      </li>
+      <li class="page-item" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">
+        <a th:href="@{'/orders/' + ${orders.number+1}}" aria-label='Next' class="page-link">
+          <span aria-hidden='true'><i class="bi bi-arrow-right"></i></span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
+ </div>
+
+</html>

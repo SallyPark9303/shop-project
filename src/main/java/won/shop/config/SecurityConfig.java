@@ -27,29 +27,29 @@ public class SecurityConfig {
 
         http.formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/").permitAll()
                 .usernameParameter("email")
                 .failureUrl("/login/error").permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/").permitAll();
 
         http.authorizeRequests()
                 .requestMatchers("/css/**", "/js/**").permitAll()
                 .requestMatchers("/","/login", "/members/**", "/item/**", "/images/**").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated();
+ .anyRequest().authenticated();
 
-        http.exceptionHandling()
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint()); // 인증되지 않은 사용자가 리소스에 접근할때 수행되는 핸들러 등록.
+ http.exceptionHandling()
+ .authenticationEntryPoint(new CustomAuthenticationEntryPoint()); // 인증되지 않은 사용자가 리소스에 접근할때 수행되는 핸들러 등록.
 
 
-        return http.build();
-    }
+ return http.build();
+ }
 
-    // 비밀번호 암호화
-    @Bean
+ // 비밀번호 암호화
+ @Bean
     public PasswordEncoder passwordEncoder(){
         // 해수함수를 이용하여 비밀번호를 암호화하여 저장.
         return new BCryptPasswordEncoder();

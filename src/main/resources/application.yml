@@ -16,7 +16,7 @@ spring:
         smtp:
           auth: true
           starttls:
-            enable: true
+            enable: truea
             required: true
 
   servlet:
@@ -28,6 +28,7 @@ spring:
       encoding=UTF-8
   jpa:
     hibernate:
+      default_batch_fetch_size: 1000
       ddl-auto: update
     properties:
       hibernate:
