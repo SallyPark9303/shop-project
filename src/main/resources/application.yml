@@ -1,16 +1,16 @@
 spring:
   datasource:
-    url: jdbc:sqlserver://pshopdb.database.windows.net:1433;database=shop_prj;user=won2@pshopdb;password=dnjs!32433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-    username: won2@pshopdb
-    password: dnjs!32433
+    url:
+    username: 
+    password:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   messages:
     basename: messages
   mail:
     host: smtp.gmail.com
     port: 587
-    username: sallypark185@gmail.com
-    password: cvlpfstkiyruesvf
+    username: 
+    password: 
     properties:
       mail:
         smtp:
