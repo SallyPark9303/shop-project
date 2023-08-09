@@ -4,7 +4,7 @@
 
 
 <H2>ERD 도메인 </H2>
-![쇼핑몰프로젝트_erd](https://github.com/SallyPark9303/shop-project/assets/59715100/ecc2b929-8246-402b-ac3d-ca72f28f4b0b)
+<img width="250px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/ecc2b929-8246-402b-ac3d-ca72f28f4b0b"/>
 
 
 <h2>화면</h2>
