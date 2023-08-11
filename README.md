@@ -19,7 +19,7 @@
 
 <h2>화면</h2>
 <h5>동영상</h5>
-<a href="https://www.youtube.com/watch?v=MKkXBEEoXt8"/>
+<a href="https://www.youtube.com/watch?v=MKkXBEEoXt8"/>동영상으로 보기
 <div class="row">
  <div class="col-6">
  <h5>메인 화면</h5>
