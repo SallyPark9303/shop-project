@@ -12,7 +12,10 @@
 
 <H2>ERD 도메인 </H2>
 <img width="1000px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/ecc2b929-8246-402b-ac3d-ca72f28f4b0b"/>
-
+<H2>기능 </H2>
+<div> 회원: 회원가입, 로그인, 로그아웃 </div>
+<div> 회원: 상품 상세 보기, 주문 / 주문 관리(주문 취소), 장바구니 /장바구니 관리(삭제 , 수량변경, 주문) </div>
+<div> 관리자: 상품등록 / 상품 관리(상품 수정, 상품 목록) </div>
 
 <h2>화면</h2>
 <div class="row">
