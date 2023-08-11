@@ -15,5 +15,31 @@
 
 
 <h2>화면</h2>
+<div class="row">
+ <div class="col-6">
+ <h5>메인 화면</h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/54fead89-76e6-407f-9185-30c9b3f6f9be"/>
+ </div>
+  <div class="col-6">
+ <h5>로그인</h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/f09dad94-5621-4b5c-91b3-f6aad301c992"/>
+ </div>
+  <h5>회원가입</h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/1d086180-71d7-40e5-b0a2-cec7b96c396b"/>
+ </div>
+  <h5>상품등록 - 관리자</h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/34722634-eb42-427b-8210-1ffd6401ec3e"/>
+  <h5>상품관리 - 관리자 </h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/b7c5c692-439c-4c9b-9f2c-eef48d5308c1"/>
+   <h5> - 관리자 </h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/b7c5c692-439c-4c9b-9f2c-eef48d5308c1"/>
+ </div>
+
+
+
+
+</div>
+
+
 
 <h2>url</h2>
