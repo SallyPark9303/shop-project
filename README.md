@@ -31,8 +31,8 @@
   <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/34722634-eb42-427b-8210-1ffd6401ec3e"/>
   <h5>상품관리 - 관리자 </h5>
   <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/b7c5c692-439c-4c9b-9f2c-eef48d5308c1"/>
-   <h5> - 관리자 </h5>
-  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/b7c5c692-439c-4c9b-9f2c-eef48d5308c1"/>
+   <h5>상품 상세 </h5>
+  <img width="450px" src="https://github.com/SallyPark9303/shop-project/assets/59715100/bc448e50-02c7-45b0-aac2-77440d5c49c7"/>
  </div>
 
 
