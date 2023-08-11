@@ -18,6 +18,8 @@
 <div> 관리자: 상품등록 / 상품 관리(상품 수정, 상품 목록) </div>
 
 <h2>화면</h2>
+<h5>동영상</h5>
+<a href="https://www.youtube.com/watch?v=MKkXBEEoXt8"/>
 <div class="row">
  <div class="col-6">
  <h5>메인 화면</h5>
